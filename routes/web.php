@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/buscaCorreios', [App\Http\Controllers\SuapController::class, 'rastreio']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/logarFacebook', [App\Http\Controllers\Auth\LoginController::class, 'logarFacebook']);

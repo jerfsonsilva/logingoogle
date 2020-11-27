@@ -10,15 +10,26 @@
 
                 <div class="card-body">
                     @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    <div class="row">
+                        <div class="col-6">
+                            <label>Codigo de rastreio</label>
+                            <input type="text" name="" class="form-control">
+                        </div>
+                        <div class="col-2">
+                            <label><br><br></label>
+                            <button type="button" onclick="buscaRastreio()" style="margin-top: 33px;" class="btn btn-primary">Verificar</button></div>
+                        </div>
+                        <div class="col-12" id="rastreio">
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-@endsection
+    @endsection

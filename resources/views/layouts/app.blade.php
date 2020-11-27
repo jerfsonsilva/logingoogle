@@ -31,6 +31,9 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     
     <!-- Scripts -->
+
+    <script src="{{ asset('soap/jquery.soap.js') }}" defer></script>
+    
     <script src="{{ asset('default.js') }}" defer></script>
 
     <!-- Fonts -->
@@ -79,7 +82,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                  
+
                                 <a class="dropdown-item" 
                                 onclick="deslogar(event)">
                                 {{ __('Deslogar') }}

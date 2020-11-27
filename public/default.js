@@ -1,3 +1,21 @@
+ function buscaRastreio() {
+     $.soap({
+    url: 'https://webservice.correios.com.br/service/rastro/Rastro.wsdl',
+    method: 'get',
+    data: {
+        objetos: 'LB143426677SG',
+        msg: 'Hi!'
+    },
+
+    success: function (soapResponse) {
+        console.log(soapResponse);
+    },
+    error: function (SOAPResponse) {
+        // show error
+    }
+});
+ }
+
  function callbackLogar(googleUser) {
  	var profile = googleUser.getBasicProfile();
 
