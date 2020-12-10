@@ -1,55 +1,55 @@
  function buscaRastreio() {
      $.soap({
-    url: 'https://webservice.correios.com.br/service/rastro/Rastro.wsdl',
-    method: 'get',
-    data: {
-        objetos: 'LB143426677SG',
-        msg: 'Hi!'
-    },
+        url: 'https://webservice.correios.com.br/service/rastro/Rastro.wsdl',
+        method: 'get',
+        data: {
+            objetos: 'LB143426677SG',
+            msg: 'Hi!'
+        },
 
-    success: function (soapResponse) {
-        console.log(soapResponse);
-    },
-    error: function (SOAPResponse) {
+        success: function (soapResponse) {
+            console.log(soapResponse);
+        },
+        error: function (SOAPResponse) {
         // show error
     }
 });
  }
 
  function callbackLogar(googleUser) {
- 	var profile = googleUser.getBasicProfile();
+  var profile = googleUser.getBasicProfile();
 
- 	$.ajax({
- 		url: "/logarFacebook?id="+profile.getId()+'&&name='+profile.getName()+'&&foto='+profile.getImageUrl()+'&&email='+profile.getEmail(),
- 		dataType: 'json',
- 		success: function(dados) {
- 			if (dados.resultado) {
- 				window.location = '/home';
- 			}else{
- 				alert("Erro ao logar no sistema");
- 			}
- 		}
- 	});
-
-
+  $.ajax({
+   url: "/logarFacebook?id="+profile.getId()+'&&name='+profile.getName()+'&&foto='+profile.getImageUrl()+'&&email='+profile.getEmail(),
+   dataType: 'json',
+   success: function(dados) {
+    if (dados.resultado) {
+     window.location = '/home';
+ }else{
+     alert("Erro ao logar no sistema");
  }
- function callbackLogarPI(googleUser) {
- 	var profile = googleUser.getBasicProfile();
- }
- function deslogargoogle() {
- 	var auth2 = gapi.auth2.getAuthInstance();
- 	auth2.signOut().then(function () {
- 		console.log('Usuario deslogado');
- 	});
- }
- function deslogar(event) {
- 	event.preventDefault();
- 	deslogargoogle();
+}
+});
 
- 	document.getElementById('logout-form').submit();
- }
 
- function pesquisacep(campoCEP,idRua,idBairro,idCidade,idUf) {
+}
+function callbackLogarPI(googleUser) {
+  var profile = googleUser.getBasicProfile();
+}
+function deslogargoogle() {
+  var auth2 = gapi.auth2.getAuthInstance();
+  auth2.signOut().then(function () {
+   console.log('Usuario deslogado');
+});
+}
+function deslogar(event) {
+  event.preventDefault();
+  deslogargoogle();
+
+  document.getElementById('logout-form').submit();
+}
+
+function pesquisacep(campoCEP,idRua,idBairro,idCidade,idUf,idIbge) {
 
    //Nova variável "cep" somente com dígitos.
    var cep = $(campoCEP).val().replace(/\D/g, '');
@@ -68,7 +68,7 @@
                         $("#"+idBairro).val("...");
                         $("#"+idCidade).val("...");
                         $("#"+idUf).val("...");
-                      //  $("#ibge").val("...");
+                        $("#"+idIbge).val("...");
 
                         //Consulta o webservice viacep.com.br/
                         $.ajax({
@@ -82,7 +82,7 @@
                                 $("#"+idBairro).val(dados.bairro);
                                 $("#"+idCidade).val(dados.localidade);
                                 $("#"+idUf).val(dados.uf);
-                               // $("#ibge").val(dados.ibge);
+                                $("#"+idIbge).val(dados.ibge);
                             } //end if.
                             else {
                                 //CEP pesquisado não foi encontrado.
@@ -90,6 +90,7 @@
                                 $("#"+idBairro).val("");
                                 $("#"+idCidade).val("");
                                 $("#"+idUf).val("");
+                                $("#"+idIbge).val("");
                                 alert("CEP não encontrado.");
                             }
 
@@ -109,6 +110,7 @@
                         $("#"+idBairro).val("");
                         $("#"+idCidade).val("");
                         $("#"+idUf).val("");
+                        $("#"+idIbge).val("");
                         alert("Formato de CEP inválido.");
                     }
                 } //end if.
@@ -118,6 +120,7 @@
                     $("#"+idBairro).val("");
                     $("#"+idCidade).val("");
                     $("#"+idUf).val("");
+                    $("#"+idIbge).val("");
                 }
 
             }
