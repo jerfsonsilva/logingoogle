@@ -1,34 +1,23 @@
  function buscaRastreio() {
-     $.soap({
-        url: 'https://webservice.correios.com.br/service/rastro/Rastro.wsdl',
-        method: 'get',
-        data: {
-            objetos: 'LB143426677SG',
-            msg: 'Hi!'
-        },
+  
+        window.location =  "/buscaCorreios?codigo="+$("#codigo").val();
+      
 
-        success: function (soapResponse) {
-            console.log(soapResponse);
-        },
-        error: function (SOAPResponse) {
-        // show error
-    }
-});
  }
 
  function callbackLogar(googleUser) {
   var profile = googleUser.getBasicProfile();
 
   $.ajax({
-   url: "/logarFacebook?id="+profile.getId()+'&&name='+profile.getName()+'&&foto='+profile.getImageUrl()+'&&email='+profile.getEmail(),
-   dataType: 'json',
-   success: function(dados) {
-    if (dados.resultado) {
-     window.location = '/home';
- }else{
-     alert("Erro ao logar no sistema");
- }
-}
+     url: "/logarFacebook?id="+profile.getId()+'&&name='+profile.getName()+'&&foto='+profile.getImageUrl()+'&&email='+profile.getEmail(),
+     dataType: 'json',
+     success: function(dados) {
+        if (dados.resultado) {
+           window.location = '/home';
+       }else{
+           alert("Erro ao logar no sistema");
+       }
+   }
 });
 
 
@@ -39,8 +28,8 @@ function callbackLogarPI(googleUser) {
 function deslogargoogle() {
   var auth2 = gapi.auth2.getAuthInstance();
   auth2.signOut().then(function () {
-   console.log('Usuario deslogado');
-});
+     console.log('Usuario deslogado');
+ });
 }
 function deslogar(event) {
   event.preventDefault();

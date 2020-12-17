@@ -52,6 +52,23 @@
                             <input name="ibge" class="form-control" type="text" id="ibge" />
 
                         </div>
+                     
+                        <h6 class="text-center col-12">   <hr>Rastreio de Objetos do correios</h6>
+
+                        <div class="col-4" >
+                            <label>Codigo: </label>
+                            <input type="text" class="form-control" id="codigo" />
+
+                        </div>
+                        <div class="col-2" >
+                            <br>
+                            <button class="btn btn-primary btn-sm" type="button" onclick="buscaRastreio()" style="margin-top: 10px;">Buscar</button>
+
+                        </div>
+                        <div class="col-12" id="resultado">
+
+                        </div>
+
                     </form>
 
 
@@ -59,5 +76,6 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection
